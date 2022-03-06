@@ -60,7 +60,6 @@ namespace Codecool.WasteRecycling
             // to-do refactor
             if (garbage.GetType() == typeof(PlasticGarbage))
             {
-
                 if (((PlasticGarbage)garbage).Cleaned == true)
                 {
                     int arraySize = PlasticWasteContent.Length;
@@ -72,6 +71,11 @@ namespace Codecool.WasteRecycling
                     }
                     temp[newSize - 1] = (PlasticGarbage)garbage;
                     PlasticWasteContent = temp;
+                }
+                else
+                {
+                    throw new DustbinContentException("The plastic is not clean!");
+
                 }
             }
 
@@ -90,6 +94,13 @@ namespace Codecool.WasteRecycling
                     temp[newSize - 1] = (PaperGarbage)garbage;
                     PaperWasteContent = temp;
                 }
+                else
+                {
+                    throw new DustbinContentException("The paper is not squeezed!");
+
+                }
+
+
             }
             else if (garbage is Garbage)
             {
@@ -103,12 +114,8 @@ namespace Codecool.WasteRecycling
                 temp[newSize - 1] = garbage;
                 HouseWasteContent = temp;
             }
-
-            else
-            {
-                throw new DustbinContentException("valami!");
-            }
         }
+
 
 
 
@@ -131,7 +138,6 @@ namespace Codecool.WasteRecycling
                 builder.Append("nr." + (i + 1) + " " + HouseWasteContent[i].Name + "\n");
             }
             builder.Append(Blue + "Paper content : " + GetPaperCount() + (GetPaperCount() <= 1 ? " item" : " items") + "\n" + EndTag);
-            //            builder.Append(Blue).Append("Paper content : ").Append(GetPaperCount()).Append((GetPaperCount() <= 1 ? " item" : " items")).Append("\n").Append(EndTag);
 
             for (int i = 0; i < GetPaperCount(); i++)
             {
