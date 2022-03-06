@@ -102,7 +102,7 @@ namespace Codecool.WasteRecycling
 
 
             }
-            else if (garbage is Garbage)
+            else
             {
                 int arraySize = HouseWasteContent.Length;
                 int newSize = arraySize + 1;
